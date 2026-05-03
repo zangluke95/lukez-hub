@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Luke's Hub — lukez.edu.kg</title>
+  <meta name="description" content="Luke's collection of web projects — tennis coaching, tools, and more." />
+  <meta name="author" content="Luke" />
+  <meta property="og:title" content="Luke's Hub" />
+  <meta property="og:description" content="Tennis coaching, web tools, and projects by Luke." />
+  <meta property="og:type" content="website" />
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7966932624845484"
+       crossorigin="anonymous"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #0f1a13;
+      --ink-soft: #3d5244;
+      --ink-muted: #7a9485;
+      --cream: #f5f2eb;
+      --cream-dark: #ede9df;
+      --green: #1c6b3a;
+      --green-light: #d4ead9;
+      --accent: #e8a030;
+      --border: rgba(28, 107, 58, 0.15);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Subtle dot grid background */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(28,107,58,0.08) 1px, transparent 1px);
+      background-size: 28px 28px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: relative;
+      z-index: 1;
+      padding: 3.5rem 2rem 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 24px;
+      height: 1.5px;
+      background: var(--green);
+    }
+
+    h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(42px, 8vw, 78px);
+      line-height: 1.0;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 1.25rem;
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--green);
+    }
+
+    .tagline {
+      font-size: 17px;
+      font-weight: 300;
+      color: var(--ink-soft);
+      max-width: 480px;
+      line-height: 1.65;
+    }
+
+    /* Decorative accent line */
+    .header-rule {
+      width: 60px;
+      height: 3px;
+      background: var(--accent);
+      margin: 2rem 0;
+      border-radius: 2px;
+    }
+
+    /* ── GRID ── */
+    .section {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 2rem 4rem;
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 0.5px;
+      background: var(--border);
+      max-width: 200px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: #fff;
+      border: 0.5px solid var(--border);
+      border-radius: 16px;
+      padding: 1.75rem;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--card-accent, var(--green));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(15, 26, 19, 0.1);
+      border-color: rgba(28, 107, 58, 0.3);
+    }
+
+    .card:hover::before { transform: scaleX(1); }
+
+    .card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: var(--card-bg, var(--green-light));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+    }
+
+    .card-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 20px;
+      color: var(--ink);
+      line-height: 1.2;
+    }
+
+    .card-desc {
+      font-size: 13.5px;
+      font-weight: 300;
+      color: var(--ink-soft);
+      line-height: 1.6;
+      flex: 1;
+    }
+
+    .card-link {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--green);
+      letter-spacing: 0.04em;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 4px;
+    }
+
+    .card-link::after {
+      content: '→';
+      transition: transform 0.2s ease;
+    }
+
+    .card:hover .card-link::after { transform: translateX(4px); }
+
+    .card-tag {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 20px;
+      background: var(--card-bg, var(--green-light));
+      color: var(--green);
+      align-self: flex-start;
+    }
+
+    /* Featured card (wider) */
+    .card.featured {
+      grid-column: span 2;
+      flex-direction: row;
+      align-items: center;
+      gap: 2rem;
+      background: var(--ink);
+      border-color: transparent;
+      color: #fff;
+    }
+
+    .card.featured .card-title { color: #fff; }
+    .card.featured .card-desc { color: rgba(255,255,255,0.65); }
+    .card.featured .card-link { color: var(--accent); }
+    .card.featured .card-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.1);
+      font-size: 28px;
+      flex-shrink: 0;
+    }
+    .card.featured .card-tag {
+      background: rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.7);
+    }
+    .card.featured::before { background: var(--accent); }
+
+    @media (max-width: 600px) {
+      .card.featured { grid-column: span 1; flex-direction: column; }
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative;
+      z-index: 1;
+      border-top: 0.5px solid var(--border);
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 2rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    footer p {
+      font-size: 13px;
+      color: var(--ink-muted);
+    }
+
+    footer a {
+      color: var(--green);
+      text-decoration: none;
+      font-size: 13px;
+    }
+
+    footer a:hover { text-decoration: underline; }
+
+    /* Entrance animation */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    header, .section {
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .section { animation-delay: 0.1s; }
+
+    .card:nth-child(1) { animation: fadeUp 0.5s 0.15s ease both; }
+    .card:nth-child(2) { animation: fadeUp 0.5s 0.22s ease both; }
+    .card:nth-child(3) { animation: fadeUp 0.5s 0.29s ease both; }
+    .card:nth-child(4) { animation: fadeUp 0.5s 0.36s ease both; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <p class="eyebrow">lukez.edu.kg</p>
+    <h1>Luke's<br><em>Digital Hub</em></h1>
+    <div class="header-rule"></div>
+    <p class="tagline">A collection of tools, coaching resources, and projects. Pick what you need.</p>
+  </header>
+
+  <section class="section">
+    <p class="section-label">Projects</p>
+    <div class="cards">
+
+      <!-- Featured: Tennis Coaching -->
+      <a href="https://smash-tennis.lukez.edu.kg" class="card featured" style="--card-accent:#e8a030;">
+        <div class="card-icon">🎾</div>
+        <div>
+          <span class="card-tag">Featured</span>
+          <h2 class="card-title">Smash Tennis Coaching</h2>
+          <p class="card-desc">Professional tennis coaching with Luke. Book sessions, improve your game, and reach your goals on the court.</p>
+          <span class="card-link">Visit smash-tennis.lukez.edu.kg</span>
+        </div>
+      </a>
+
+      <!-- Picker Wheel -->
+      <a href="https://798899.xyz" class="card" style="--card-accent:#1c6b3a;--card-bg:#d4ead9;">
+        <div class="card-icon">🎡</div>
+        <span class="card-tag">Tool</span>
+        <h2 class="card-title">Picker Wheel</h2>
+        <p class="card-desc">Spin to decide! Create custom wheels and let chance make the call for you.</p>
+        <span class="card-link">Visit 798899.xyz</span>
+      </a>
+
+      <!-- Placeholder for more projects -->
+      <div class="card" style="--card-accent:#7a9485;--card-bg:#eef4f0;opacity:0.6;cursor:default;">
+        <div class="card-icon">✦</div>
+        <span class="card-tag">Coming soon</span>
+        <h2 class="card-title">More projects</h2>
+        <p class="card-desc">New tools and resources are on the way. Check back soon.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 lukez.edu.kg</p>
+    <div style="display:flex;gap:1.5rem;flex-wrap:wrap;">
+      <a href="/privacy-policy.html">Privacy Policy</a>
+      <a href="mailto:admin@lukez.edu.kg">Contact</a>
+    </div>
+  </footer>
+
+</body>
+</html>
